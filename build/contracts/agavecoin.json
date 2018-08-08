@@ -1,0 +1,97 @@
+{
+  "contractName": "agavecoin",
+  "abi": [],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3006080604052600080fd00a165627a7a7230582055bb1a6acc4aa2d0ed1b8bfd3a57df8bae721f3ccffdebe45ab7bf4a70ca48290029",
+  "deployedBytecode": "0x6080604052600080fd00a165627a7a7230582055bb1a6acc4aa2d0ed1b8bfd3a57df8bae721f3ccffdebe45ab7bf4a70ca48290029",
+  "sourceMap": "26:23:7:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;26:23:7;;;;;;;",
+  "deployedSourceMap": "26:23:7:-;;;;;",
+  "source": "pragma solidity ^0.4.23;\n\ncontract agavecoin {\n\n}\n",
+  "sourcePath": "/home/jacg/agavecoin/contracts/agavecoin.sol",
+  "ast": {
+    "absolutePath": "/home/jacg/agavecoin/contracts/agavecoin.sol",
+    "exportedSymbols": {
+      "agavecoin": [
+        457
+      ]
+    },
+    "id": 458,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 456,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".23"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:7"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 457,
+        "linearizedBaseContracts": [
+          457
+        ],
+        "name": "agavecoin",
+        "nodeType": "ContractDefinition",
+        "nodes": [],
+        "scope": 458,
+        "src": "26:23:7"
+      }
+    ],
+    "src": "0:50:7"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/jacg/agavecoin/contracts/agavecoin.sol",
+    "exportedSymbols": {
+      "agavecoin": [
+        457
+      ]
+    },
+    "id": 458,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 456,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".23"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:7"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 457,
+        "linearizedBaseContracts": [
+          457
+        ],
+        "name": "agavecoin",
+        "nodeType": "ContractDefinition",
+        "nodes": [],
+        "scope": 458,
+        "src": "26:23:7"
+      }
+    ],
+    "src": "0:50:7"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.1",
+  "updatedAt": "2018-07-31T13:20:00.449Z"
+}
