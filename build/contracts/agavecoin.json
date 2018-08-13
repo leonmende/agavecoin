@@ -1,32 +1,32 @@
 {
   "contractName": "agavecoin",
   "abi": [],
-  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3006080604052600080fd00a165627a7a7230582055bb1a6acc4aa2d0ed1b8bfd3a57df8bae721f3ccffdebe45ab7bf4a70ca48290029",
-  "deployedBytecode": "0x6080604052600080fd00a165627a7a7230582055bb1a6acc4aa2d0ed1b8bfd3a57df8bae721f3ccffdebe45ab7bf4a70ca48290029",
-  "sourceMap": "26:23:7:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;26:23:7;;;;;;;",
-  "deployedSourceMap": "26:23:7:-;;;;;",
-  "source": "pragma solidity ^0.4.23;\n\ncontract agavecoin {\n\n}\n",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3006080604052600080fd00a165627a7a7230582093437bb1ed9cca1d2a2c8fa86635694016e486efadb088b00b6cd4547fa707ae0029",
+  "deployedBytecode": "0x6080604052600080fd00a165627a7a7230582093437bb1ed9cca1d2a2c8fa86635694016e486efadb088b00b6cd4547fa707ae0029",
+  "sourceMap": "26:23:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;26:23:0;;;;;;;",
+  "deployedSourceMap": "26:23:0:-;;;;;",
+  "source": "pragma solidity ^0.4.24;\n\ncontract agavecoin {\n\n}\n",
   "sourcePath": "/home/jacg/agavecoin/contracts/agavecoin.sol",
   "ast": {
     "absolutePath": "/home/jacg/agavecoin/contracts/agavecoin.sol",
     "exportedSymbols": {
       "agavecoin": [
-        457
+        2
       ]
     },
-    "id": 458,
+    "id": 3,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 456,
+        "id": 1,
         "literals": [
           "solidity",
           "^",
           "0.4",
-          ".23"
+          ".24"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:7"
+        "src": "0:24:0"
       },
       {
         "baseContracts": [],
@@ -34,39 +34,39 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 457,
+        "id": 2,
         "linearizedBaseContracts": [
-          457
+          2
         ],
         "name": "agavecoin",
         "nodeType": "ContractDefinition",
         "nodes": [],
-        "scope": 458,
-        "src": "26:23:7"
+        "scope": 3,
+        "src": "26:23:0"
       }
     ],
-    "src": "0:50:7"
+    "src": "0:50:0"
   },
   "legacyAST": {
     "absolutePath": "/home/jacg/agavecoin/contracts/agavecoin.sol",
     "exportedSymbols": {
       "agavecoin": [
-        457
+        2
       ]
     },
-    "id": 458,
+    "id": 3,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 456,
+        "id": 1,
         "literals": [
           "solidity",
           "^",
           "0.4",
-          ".23"
+          ".24"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:7"
+        "src": "0:24:0"
       },
       {
         "baseContracts": [],
@@ -74,18 +74,18 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 457,
+        "id": 2,
         "linearizedBaseContracts": [
-          457
+          2
         ],
         "name": "agavecoin",
         "nodeType": "ContractDefinition",
         "nodes": [],
-        "scope": 458,
-        "src": "26:23:7"
+        "scope": 3,
+        "src": "26:23:0"
       }
     ],
-    "src": "0:50:7"
+    "src": "0:50:0"
   },
   "compiler": {
     "name": "solc",
@@ -93,5 +93,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-07-31T13:20:00.449Z"
+  "updatedAt": "2018-08-13T14:23:26.841Z"
 }
