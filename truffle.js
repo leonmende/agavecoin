@@ -12,7 +12,7 @@
  *   },
  */
 var HDWalletProvider = require("truffle-hdwallet-provider");
-var mnemonic = "symptom fun use shove water defy practice song moral neither reduce focus";
+var mnemonic = "";
 //symptom fun use shove water defy practice song moral neither reduce focus
 
 
