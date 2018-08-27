@@ -1,35 +1,45 @@
-pragma solidity ^0.4.24;
-
-import "./Ownable.sol";
-import "./StandardToken.sol";
-
 contract AgaveCoin is Ownable, StandardToken {
-
+  using SafeMath for uint256;
 
     string public name = "AgaveCoin";
     string public symbol = "AGVC";
     uint public decimals = 18;
 
-    uint public totalSupply = 35000 * (10**6) * (10**18); // 35 Billion
+    uint public INITIAL_SUPPLY = 35000 * (10**6) * (10 ** uint256(decimals)) ; // 35 Billion
+    
+    /// The owner of this address:
+    address public PartnersAddress = 0x3Ab66540262C3a35651B532FdcCaB59805Eb6d8B;
+
+    /// The owner of this address:
+    address public TeamAddress = 0x9CDeA5dec3082ae7b8a58eb5E99c57876484f7A1;
+    
+    /// The owner of this address:
+    address public PrivateSaleAddress = 0x6690D262AB9848e132aaa9E25995e40949A497E0;    
+    
+    /// The owner of this address:
+    address public ReserveAddress = 0x40A6B86726e4003e3e72E3e70A8c70534938881D;
+
+    uint256 PartnersTokens = 2450 * (10**6) * (10**uint256(decimals));
+    uint256 TeamTokens = 1750 * (10**6) * (10**uint256(decimals));
+    uint256 PrivateSaleTokens = 2450 * (10**6) * (10**uint256(decimals));
+    uint256 ReserveTokens = 5250 * (10**6) * (10**uint256(decimals));
 
     constructor () public {
-        balances[msg.sender] = 23100 * (10**6) * (10**18);                                //Public
-        balances[0xe646a5C60FaA64A6B8146210b2C71DD0968b7023] = 3150 * (10**6) * (10**18); //Partners
-        balances[0x9283851FF7F8a57eDeF02e72972A970Fe0F25a98] = 1750 * (10**6) * (10**18); //Team and Advisers
-        balances[0xd5D235e12Dec85E35D549a7856F96B3ce00e0885] = 2100 * (10**6) * (10**18); //Private Sale
-        balances[0x08a2a6fB377137B71474B8D6a20575EA1E5396AE] = 4900 * (10**6) * (10**18); //Reserve
-    }
+      totalSupply_ = INITIAL_SUPPLY;
+      balances[PartnersAddress] = PartnersTokens; //Partners
+      balances[TeamAddress] = TeamTokens; //Team and Advisers
+      balances[PrivateSaleAddress] = PrivateSaleTokens; //Private Sale
+      balances[ReserveAddress] = ReserveTokens; //Reserve
+      balances[msg.sender] = INITIAL_SUPPLY - PartnersTokens - TeamTokens - PrivateSaleTokens - ReserveTokens;
 
-    function () public {
     }
+    //////////////// owner only functions below
 
+    /// @notice To transfer token contract ownership
+    /// @param _newOwner The address of the new owner of this contract
     function transferOwnership(address _newOwner) public onlyOwner {
-        balances[_newOwner] = balances[owner].add(balances[_newOwner]);
+        balances[_newOwner] = balances[owner];
         balances[owner] = 0;
         Ownable.transferOwnership(_newOwner);
-    }
-
-    function transferAnyERC20Token(address tokenAddress, uint amount) public onlyOwner returns (bool success) {
-        return ERC20(tokenAddress).transfer(owner, amount);
     }
 }
