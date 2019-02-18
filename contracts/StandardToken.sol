@@ -1,8 +1,8 @@
-pragma solidity ^0.4.24;
+pragma solidity ^0.5.2;
 
 import "./ERC20.sol";
+import "./Ownable.sol";
 import "./SafeMath.sol";
-
 
 /**
  * @title Standard ERC20 token
@@ -11,12 +11,16 @@ import "./SafeMath.sol";
  * https://github.com/ethereum/EIPs/issues/20
  * Based on code by FirstBlood: https://github.com/Firstbloodio/token/blob/master/smart_contract/FirstBloodToken.sol
  */
-contract StandardToken is ERC20 {
+contract StandardToken is ERC20, Ownable {
   using SafeMath for uint256;
 
   mapping(address => uint256) balances;
 
   mapping (address => mapping (address => uint256)) internal allowed;
+
+  mapping (address => bool) public frozenAccount;
+
+  event FrozenFunds(address target, bool frozen);
 
   uint256 totalSupply_;
 
@@ -52,6 +56,12 @@ contract StandardToken is ERC20 {
   {
     return allowed[_owner][_spender];
   }
+  
+
+  function freezeAccount(address target, bool freeze) onlyOwner public {
+    frozenAccount[target] = freeze;
+    emit FrozenFunds(target, freeze);
+    }
 
   /**
   * @dev Transfer token for a specified address
@@ -61,6 +71,7 @@ contract StandardToken is ERC20 {
   function transfer(address _to, uint256 _value) public returns (bool) {
     require(_value <= balances[msg.sender]);
     require(_to != address(0));
+    require(!frozenAccount[msg.sender]);
 
     balances[msg.sender] = balances[msg.sender].sub(_value);
     balances[_to] = balances[_to].add(_value);
@@ -100,6 +111,7 @@ contract StandardToken is ERC20 {
     require(_value <= balances[_from]);
     require(_value <= allowed[_from][msg.sender]);
     require(_to != address(0));
+    require(!frozenAccount[msg.sender]);
 
     balances[_from] = balances[_from].sub(_value);
     balances[_to] = balances[_to].add(_value);
@@ -113,7 +125,6 @@ contract StandardToken is ERC20 {
    * approve should be called when allowed[_spender] == 0. To increment
    * allowed value is better to use this function to avoid 2 calls (and wait until
    * the first transaction is mined)
-   * From MonolithDAO Token.sol
    * @param _spender The address which will spend the funds.
    * @param _addedValue The amount of tokens to increase the allowance by.
    */
@@ -154,6 +165,29 @@ contract StandardToken is ERC20 {
     }
     emit Approval(msg.sender, _spender, allowed[msg.sender][_spender]);
     return true;
+
+
+  }
+      /**
+    * @dev Internal function that burns an amount of the token of a given
+    * account.
+    * @param account The account whose tokens will be burnt.
+    * @param value The amount that will be burnt.
+    */
+    function _burn(address account, uint256 value) internal {
+      require(account != address(0));
+
+      totalSupply_ = totalSupply_.sub(value);
+      balances[account] = balances[account].sub(value);
+      emit Transfer(account, address(0), value);
+    }
+  function _burnFrom(address account, uint256 value) internal {
+    _burn(account, value);
+    approve(account, allowed[account][msg.sender].sub(value));
   }
 
 }
+
+
+
+

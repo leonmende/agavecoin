@@ -1,4 +1,9 @@
-contract AgaveCoin is Ownable, StandardToken {
+pragma solidity ^0.5.2;
+import "./Ownable.sol";
+import "./ERC20Burnable.sol";
+import "./SafeMath.sol";
+
+contract AgaveCoin is Ownable, ERC20Burnable {
   using SafeMath for uint256;
 
     string public name = "AgaveCoin";
@@ -7,30 +12,23 @@ contract AgaveCoin is Ownable, StandardToken {
 
     uint public INITIAL_SUPPLY = 35000 * (10**6) * (10 ** uint256(decimals)) ; // 35 Billion
     
-    /// The owner of this address:
-    address public PartnersAddress = 0x3Ab66540262C3a35651B532FdcCaB59805Eb6d8B;
 
     /// The owner of this address:
-    address public TeamAddress = 0x9CDeA5dec3082ae7b8a58eb5E99c57876484f7A1;
+    address public ICOAddress = 0xFd167447Fb1A5E10b962F9c89c857f83bfFEB5D4;
     
     /// The owner of this address:
-    address public PrivateSaleAddress = 0x6690D262AB9848e132aaa9E25995e40949A497E0;    
+    address public AgaveCoinOperations = 0x88Ea9058d99DEf4182f4b356Ad178AdCF8e5D784;    
     
-    /// The owner of this address:
-    address public ReserveAddress = 0x40A6B86726e4003e3e72E3e70A8c70534938881D;
 
-    uint256 PartnersTokens = 2450 * (10**6) * (10**uint256(decimals));
-    uint256 TeamTokens = 1750 * (10**6) * (10**uint256(decimals));
-    uint256 PrivateSaleTokens = 2450 * (10**6) * (10**uint256(decimals));
-    uint256 ReserveTokens = 5250 * (10**6) * (10**uint256(decimals));
+    uint256 ICOAddressTokens = 25550 * (10**6) * (10**uint256(decimals));
+    uint256 AgaveCoinOperationsTokens = 9450 * (10**6) * (10**uint256(decimals));
+
 
     constructor () public {
       totalSupply_ = INITIAL_SUPPLY;
-      balances[PartnersAddress] = PartnersTokens; //Partners
-      balances[TeamAddress] = TeamTokens; //Team and Advisers
-      balances[PrivateSaleAddress] = PrivateSaleTokens; //Private Sale
-      balances[ReserveAddress] = ReserveTokens; //Reserve
-      balances[msg.sender] = INITIAL_SUPPLY - PartnersTokens - TeamTokens - PrivateSaleTokens - ReserveTokens;
+      balances[ICOAddress] = ICOAddressTokens; //Partners
+      balances[AgaveCoinOperations] = AgaveCoinOperationsTokens; //Team and Advisers
+      balances[msg.sender] = INITIAL_SUPPLY - ICOAddressTokens - AgaveCoinOperationsTokens;
 
     }
     //////////////// owner only functions below
@@ -42,4 +40,5 @@ contract AgaveCoin is Ownable, StandardToken {
         balances[owner] = 0;
         Ownable.transferOwnership(_newOwner);
     }
+
 }
